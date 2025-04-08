@@ -62,7 +62,13 @@ get_substrings:
     beqz $s0, no_semicolon #if the first output, doesn't print a semicolon
     li $v0, 4 #function for printing a string
     la $a0, semicolon #if not first output, prints a semicolon
-    syscall #calls function
+    syscall #calls command
 
 no_semicolon:
+    li $s0, 1 #count the output printed
+
+    move $t9, $v0 #keeps $v0 result
+    li $v0, 1 #command for printing an integer
+    move $a0, $t9 #moves value of $t9 into $a0
+    syscall #calls command
     
