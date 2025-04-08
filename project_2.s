@@ -147,7 +147,7 @@ invalid:
     j move_index #jumps to move_index function
 
 pad_space:
-    li $t6, 0x20 #changes null with a space
+    li $t6, 0x20 #changes NULL with a space
     j check_digit #jumps to check_digit function
 
 move_index:
@@ -156,8 +156,10 @@ move_index:
     j get_character #jumps to get_character function
 
 solve:
-    beqz $s3, save_null #return null if no valid digits
+    beqz $s3, save_null #return NULL if no valid digits
     sub $v0, $s1, $s2 #print G - H
     jr $ra #jumps
 
-
+save_null:
+    li $v0, 0x7FFFFFFF #indicates NULL
+    jr $ra
