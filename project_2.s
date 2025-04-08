@@ -136,4 +136,9 @@ valid_digit:
     addi $s3, $s3, 1 #count of valid digits
     li $t7, 5 #loads 5 into $t7
     blt $t5, $t7, add_first #add to G if the first five digits
-    
+    add $s2, $s2, $t9 #adds to H if not in first 5
+    j move_index #jumps to move_index function
+
+add_first:
+    add $s1, $s1, $t9 #adds digits to G
+    j move_index #jumps to move index function
