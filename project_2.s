@@ -101,4 +101,11 @@ get_substring_value:
     li $s3, 0 #counts valid digits
 
 get_character:
+    bge $t5, 10, solve #done when 10 characters are read
+    lb $t6, 0($a0) #loads the current byte of input
+    beqz $t6, pad_space #if null, change for space
+
+check_digit:
+    li $t7, 0x30 #ascii for '0'
+    li $t8, 0x39 #ascii for '9'
     
