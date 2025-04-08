@@ -129,4 +129,11 @@ check_if_uppercase:
     blt $t6, $t7, invalid #if digit out of range, it is invalid
     addi $t8, $t7, 20 #'A' + 20
     bge $t6, $t8, invalid #if digit out of range, it is invalid
+    sub $t9, $t6, $t7 #char - 'A'
+    addi $t9, $t9, 10 # 10 + (char - 'A')
+
+valid_digit:
+    addi $s3, $s3, 1 #count of valid digits
+    li $t7, 5 #loads 5 into $t7
+    blt $t5, $t7, add_first #add to G if the first five digits
     
