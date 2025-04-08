@@ -95,3 +95,10 @@ exit:
     syscall
 
 get_substring_value:
+    li $t5, 0 #character index
+    li $s1, 0 #first half, G
+    li $s2, 0 #second half, H
+    li $s3, 0 #counts valid digits
+
+get_character:
+    
