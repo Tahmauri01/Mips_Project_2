@@ -29,7 +29,7 @@ main:
     la $t7, SpaceInput #loads input into $t7
 
 remove_newline:
-    lb $t0, 0($t7) #loads byte from input into $t0
+    lb $t0, 0($t7) #loads first byte from input into $t0
     beqz $t0, end_remove #checks for the end of the string
     li $t8, 0x0A #loads newline character into $t8
     beq $t0, $t8, replace_null #returns NULL if byte is equal to newline character
@@ -42,3 +42,14 @@ replace_null:
 end_remove:
     li $t2, 0 #sets $t2 to 0 for an offset value
     li $s0, 0 #sets $s0 to 0 to check if output has printed to put semicolon
+
+get_substrings:
+    beq $t2, 1000, exit #if 1000 characters read then exits
+
+    la $t7, SpaceInput #loads input into $t7
+    add $t7, $t7, $t2 #adds offset to input
+    lb $t8, 0($t7) #loads first byte into $t8
+
+    beqz $t8, exit #if first byte null, input is done
+
+    
