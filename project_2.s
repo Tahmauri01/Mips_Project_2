@@ -142,3 +142,14 @@ valid_digit:
 add_first:
     add $s1, $s1, $t9 #adds digits to G
     j move_index #jumps to move index function
+
+invalid:
+    j move_index #jumps to move_index function
+
+pad_space:
+    li $t6, 0x20 #changes null with a space
+    j check_digit #jumps to check_digit function
+
+move_index:
+    addi $t5, $t5, 1 #moves index by 1
+    addi $a0, $a0, 1 #moves to the next character
