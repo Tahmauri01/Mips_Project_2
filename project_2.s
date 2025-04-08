@@ -115,4 +115,9 @@ check_digit:
 
 check_if_lowercase:
     li $t7, 0x61 #ascii for 'a'
-    
+
+    blt $t6, $t7, check_if_uppercase #if digit out of range check if uppercase
+    addi $t8, $t7, 20 # 'a' + 20
+    bge $t6, $t8, check_if_uppercase #if digit out of range check if uppercase
+    sub $t9, $t6, $t7 #char - 'a'
+    addi $t9, $t9, 10 #10 + (char - 'a')
