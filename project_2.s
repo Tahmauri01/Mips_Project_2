@@ -58,4 +58,11 @@ get_substrings:
 
     li $t4, 0x7FFFFFFF #loads 7FFFFFFF into $t4
     beq $v0, $t4, print_null #checks if input is equal to 7FFFFFFF
+
+    beqz $s0, no_semicolon #if the first output, doesn't print a semicolon
+    li $v0, 4 #function for printing a string
+    la $a0, semicolon #if not first output, prints a semicolon
+    syscall #calls function
+
+no_semicolon:
     
