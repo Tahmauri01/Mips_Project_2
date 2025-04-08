@@ -55,6 +55,7 @@ get_substrings:
     la $a0, SpaceInput #loads input into $a0
     add $a0, $a0, $t2 #adds input to offset
     jal get_substring_value #jumps to get_substring_value function
+    move $t9, $v0 #keeps $v0 value
 
     li $t4, 0x7FFFFFFF #loads 7FFFFFFF into $t4
     beq $v0, $t4, print_null #checks if input is equal to 7FFFFFFF
@@ -67,7 +68,6 @@ get_substrings:
 no_semicolon:
     li $s0, 1 #count the output printed
 
-    move $t9, $v0 #keeps $v0 result
     li $v0, 1 #command for printing an integer
     move $a0, $t9 #moves value of $t9 into $a0
     syscall #calls command
