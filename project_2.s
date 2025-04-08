@@ -79,4 +79,10 @@ print_null:
     beqz $s0, no_null_semicolon #Checks if the first output
     li $v0, 4 #command for printing
     la $a0, semicolon #loads semicolon for printing
-    
+    syscall #calls print command
+
+no_null_semicolon:
+    li $s0, 1 #count the output printed
+    li $v0, 4 #command for printing
+    la $a0, null_msg #prints NULL
+    syscall #calls print command
