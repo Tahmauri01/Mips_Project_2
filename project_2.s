@@ -121,3 +121,12 @@ check_if_lowercase:
     bge $t6, $t8, check_if_uppercase #if digit out of range check if uppercase
     sub $t9, $t6, $t7 #char - 'a'
     addi $t9, $t9, 10 #10 + (char - 'a')
+
+    j valid_digit #jumps to valid digit function
+
+check_if_uppercase:
+    li $t7, 0x41 #ascii for 'A'
+    blt $t6, $t7, invalid #if digit out of range, it is invalid
+    addi $t8, $t7, 20 #'A' + 20
+    bge $t6, $t8, invalid #if digit out of range, it is invalid
+    
