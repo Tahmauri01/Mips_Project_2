@@ -153,3 +153,11 @@ pad_space:
 move_index:
     addi $t5, $t5, 1 #moves index by 1
     addi $a0, $a0, 1 #moves to the next character
+    j get_character #jumps to get_character function
+
+solve:
+    beqz $s3, save_null #return null if no valid digits
+    sub $v0, $s1, $s2 #print G - H
+    jr $ra #jumps
+
+
