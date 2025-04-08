@@ -71,4 +71,12 @@ no_semicolon:
     li $v0, 1 #command for printing an integer
     move $a0, $t9 #moves value of $t9 into $a0
     syscall #calls command
+
+    addi $t2, $t2, 10 #moves 10 characters, to the next character
+    j get_substrings #jumps to get_substrings function
+
+print_null:
+    beqz $s0, no_null_semicolon #Checks if the first output
+    li $v0, 4 #command for printing
+    la $a0, semicolon #loads semicolon for printing
     
