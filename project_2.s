@@ -32,5 +32,13 @@ remove_newline:
     lb $t0, 0($t7) #loads byte from input into $t0
     beqz $t0, end_remove #checks for the end of the string
     li $t8, 0x0A #loads newline character into $t8
-    beq $t0, $t8, replace_null #returns null if byte is equal to newline character
-    
+    beq $t0, $t8, replace_null #returns NULL if byte is equal to newline character
+    addi $t7, $t7, 1 #adds 1 to byte to keep program going
+    j remove_newline #jumps to same function
+
+replace_null:
+    sb $zero, 0($t7) #replaces newline with NULL
+
+end_remove:
+    li $t2, 0 #sets $t2 to 0 for an offset value
+    li $s0, 0 #sets $s0 to 0 to check if output has printed to put semicolon
