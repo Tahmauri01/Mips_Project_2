@@ -86,3 +86,12 @@ no_null_semicolon:
     li $v0, 4 #command for printing
     la $a0, null_msg #prints NULL
     syscall #calls print command
+
+    addi $t2, $t2, 10 #goes to next 10 characters
+    j get_substrings #jumps to get_substrings command
+
+exit:
+    li $v0, 10 #command for exit
+    syscall
+
+get_substring_value:
