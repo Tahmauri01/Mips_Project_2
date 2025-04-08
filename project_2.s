@@ -108,4 +108,11 @@ get_character:
 check_digit:
     li $t7, 0x30 #ascii for '0'
     li $t8, 0x39 #ascii for '9'
+    blt $t6, $t7, check_if_lowercase #if digit out of range check if lowercase
+    bgt $t6, $t8, check_if_lowercase #if digit out of range check if lowercase
+    sub $t9, $t6, $t7 #converts the ascii to an integer
+    j valid_digit #jumps to valid_digit function
+
+check_if_lowercase:
+    li $t7, 0x61 #ascii for 'a'
     
